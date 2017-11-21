@@ -8,12 +8,20 @@ import { AppComponent } from './app.component';
 
 //Material Components
 import { MaterialModule } from './material/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+//Other Components 
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 //Services 
 import { FireService } from './services/fire.service';
+import { RegisterComponent } from './register/register.component';
+import { RecoverComponent } from './recover/recover.component';
+import { ListUsersComponent } from './list-users/list-users.component';
+
 
 
 @NgModule({
@@ -21,10 +29,15 @@ import { FireService } from './services/fire.service';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecoverComponent,
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot([
       {path:'inicio', component: HomeComponent },
