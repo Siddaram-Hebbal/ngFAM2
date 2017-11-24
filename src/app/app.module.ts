@@ -15,13 +15,25 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
-
-//Services 
-import { FireService } from './services/fire.service';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 
+//Services 
+import { FireService } from './services/fire.service';
+
+//Connection with Firebase
+import * as firebase from 'firebase';
+
+var config = {
+  apiKey: "AIzaSyC3TCDQt0tccAf9LaN-UOY95hKB_iMjKyw",
+  authDomain: "ngfam2-1df64.firebaseapp.com",
+  databaseURL: "https://ngfam2-1df64.firebaseio.com",
+  projectId: "ngfam2-1df64",
+  storageBucket: "ngfam2-1df64.appspot.com",
+  messagingSenderId: "1013188344139"
+};
+firebase.initializeApp(config);
 
 
 @NgModule({
@@ -41,7 +53,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     MaterialModule,
     RouterModule.forRoot([
       {path:'inicio', component: HomeComponent },
-      {path:'navbar', component: NavbarComponent},
+      {path:'users', component: ListUsersComponent},
       {path:'', redirectTo:'inicio', pathMatch: 'full' },
       {path:'**', component: NotFoundComponent}
     ])

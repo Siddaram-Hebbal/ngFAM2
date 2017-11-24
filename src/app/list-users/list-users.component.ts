@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FireService } from '../services/fire.service';
 
 @Component({
   selector: 'app-list-users',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: FireService) { }
 
   ngOnInit() {
   }
