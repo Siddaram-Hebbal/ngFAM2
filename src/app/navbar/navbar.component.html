@@ -1,8 +1,10 @@
-<mat-toolbar color="primary" class="fixed-header">
-  <mat-toolbar-row>
-    <button mat-button routerLink="/users"><mat-icon>account_box</mat-icon> Users</button>
-    <span class="example-spacer"></span>
-    <mat-icon>favorite</mat-icon>
-    <mat-icon>delete</mat-icon>
-  </mat-toolbar-row>
+<mat-toolbar color="primary">
+  <span>Angular FAM - 2</span>
 </mat-toolbar>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="/inicio">login</a>
+  <a mat-tab-link routerLink="/register">Register</a>
+  <a mat-tab-link routerLink="/recover">Recover</a>
+  <a mat-tab-link routerLink="/users">Users</a>
+</nav>

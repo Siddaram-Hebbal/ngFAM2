@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material';
 
 
 
 @NgModule({
-  imports: [MatButtonModule, MatToolbarModule, MatIconModule],
-  exports: [MatButtonModule, MatToolbarModule, MatIconModule],
+  imports: [MatTabsModule, MatButtonModule, MatToolbarModule, MatIconModule],
+  exports: [MatTabsModule, MatButtonModule, MatToolbarModule, MatIconModule],
 })
 
 export class MaterialModule { }
