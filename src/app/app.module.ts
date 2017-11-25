@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 //Main Component
 import { AppComponent } from './app.component';
 
-//Material Components
-import { MaterialModule } from './material/material.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// //Material Components
+// import { MaterialModule } from './material/material.module';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //Other Components 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -49,8 +49,8 @@ firebase.initializeApp(config);
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
+    // BrowserAnimationsModule,
+    // MaterialModule,
     RouterModule.forRoot([
       {path:'inicio', component: HomeComponent },
       {path:'users', component: ListUsersComponent},
