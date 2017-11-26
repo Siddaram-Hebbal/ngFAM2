@@ -20,6 +20,8 @@ import { FireService } from './services/fire.service';
 
 //Connection with Firebase
 import * as firebase from 'firebase';
+import { AdminComponent } from './admin/admin.component';
+import { FooterComponent } from './footer/footer.component';
 
 var config = {
   apiKey: "AIzaSyC3TCDQt0tccAf9LaN-UOY95hKB_iMjKyw",
@@ -41,14 +43,20 @@ firebase.initializeApp(config);
     LoginComponent,
     RegisterComponent,
     RecoverComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    AdminComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path:'inicio', component: HomeComponent },
+      {path:'home', component: HomeComponent },
       {path:'users', component: ListUsersComponent},
-      {path:'', redirectTo:'inicio', pathMatch: 'full' },
+      {path:'login', component: LoginComponent},
+      {path:'register', component: RegisterComponent},
+      {path:'recover', component: RecoverComponent},
+      {path:'admin', component: AdminComponent},
+      {path:'', redirectTo:'home', pathMatch: 'full' },
       {path:'**', component: NotFoundComponent}
     ])
   ],

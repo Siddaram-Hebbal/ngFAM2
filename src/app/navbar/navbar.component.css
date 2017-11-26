@@ -1,3 +1,9 @@
-.example-spacer {
-  flex: 1 1 auto;
+.sidenav{
+  width: 180px;
+}
+.sidenav li>a:hover{
+  background-color: rgba(0, 0, 0, 0);
+}
+.sidenav .active{
+  background-color: rgba(0, 0, 0, 0.2);
 }
