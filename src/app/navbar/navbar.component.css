@@ -1,9 +1,27 @@
-.sidenav{
+.side-nav{
   width: 180px;
+  padding-top: 1rem;
 }
-.sidenav li>a:hover{
+.side-nav li>a:hover{
   background-color: rgba(0, 0, 0, 0);
 }
-.sidenav .active{
+.side-nav li > a{
+  font-weight: normal;
+  color:white;
+  
+}
+.side-nav .active{
   background-color: rgba(0, 0, 0, 0.2);
+}
+ .nav-wrapper .brand-logo i {
+  margin-left: 1rem; 
+  margin-top: 0.05rem;
+  font-size: 4rem;
+} 
+.nav-wrapper .side-nav .material-icons{
+  padding-top: 1rem; 
+  font-size: 5rem;
+}
+nav i.material-icons{
+  height: 6rem;
 }
