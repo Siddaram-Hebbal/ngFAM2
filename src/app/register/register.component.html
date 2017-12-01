@@ -1,3 +1,43 @@
-<p>
-  register works!
-</p>
+<div class="row left-align">
+  <div class="col l12 s12">
+    <br><br>
+
+    <p class="flow-text">Fill in the data to add a new user.</p>    
+
+    <form [formGroup]="registerForm" (ngSubmit)="mensaje(registerForm.value)" class="col s12">
+
+      <div class="row">
+        <div class="input-field col s12 l6">
+          <i class="material-icons prefix">account_box</i>
+          <input formControlName="name"  id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Name</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <i class="material-icons prefix">email</i>
+          <input formControlName="email" id="icon_email" type="email" class="validate">
+          <label for="icon_email">Email</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <i class="material-icons prefix">lock</i>
+          <input formControlName="password" id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+            <i class="material-icons prefix">supervisor_account</i>
+            <select formControlName="role">
+              <option value="" disabled selected></option>
+              <option value="1">Administrator</option>
+              <option value="2">Common user</option>
+            </select>
+            <label>Role</label>
+        </div>
+      </div>
+
+      <button type="submit">submit</button>
+
+    </form>    
+    </div>
+</div>

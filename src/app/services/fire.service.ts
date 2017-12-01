@@ -4,17 +4,28 @@ import * as firebase from 'firebase';
 @Injectable()
 export class FireService {
 
+  public x = 25;
+
   constructor( ) { }
 
-  test(){
-    firebase.auth().createUserWithEmailAndPassword("jesus@hotmail.com", "123456")
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorMessage);
-      // ...
-    });
+  showUsers(){
+
+  }
+
+  loginUser(){
+
+  }
+
+  registerUser(userData){
+    console.log(userData);
+  }
+
+  recoverUser(){
+
+  }
+
+  deleteUser(){
+
   }
 
 }

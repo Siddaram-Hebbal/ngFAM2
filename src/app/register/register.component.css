@@ -1,0 +1,7 @@
+.file-field input.file-path{
+    width: 50%;
+}
+.file-field input[type="file"]{
+    width: 50%;
+    margin-left: 3rem;
+}

@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Main Component
 import { AppComponent } from './app.component';
@@ -14,14 +15,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { AdminComponent } from './admin/admin.component';
+import { FooterComponent } from './footer/footer.component';
 
 //Services 
 import { FireService } from './services/fire.service';
 
 //Connection with Firebase
 import * as firebase from 'firebase';
-import { AdminComponent } from './admin/admin.component';
-import { FooterComponent } from './footer/footer.component';
 
 var config = {
   apiKey: "AIzaSyC3TCDQt0tccAf9LaN-UOY95hKB_iMjKyw",
@@ -49,6 +50,8 @@ firebase.initializeApp(config);
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path:'home', component: HomeComponent },
       {path:'users', component: ListUsersComponent},
