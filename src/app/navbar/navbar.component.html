@@ -1,24 +1,31 @@
 <nav class="nav-extended teal lighten-2">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><i class="material-icons">fingerprint</i></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li routerLinkActive="active"><a routerLink="/home" >Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/list-users">Users</a></li>
-        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-        <li routerLinkActive="active"><a routerLink="/recover">Recover</a></li>
-        <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
-      </ul>
-      <!-- esta es la movil -->
-      <ul class="side-nav teal lighten-1" id="mobile-demo">
-        <i class="material-icons center-align">fingerprint</i>
-        <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/list-users">Users</a></li>
-        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-        <li routerLinkActive="active"><a routerLink="/recover">Recover</a></li>
-        <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="nav-wrapper">
+    <a routerLink='/home' class="brand-logo"><i class="material-icons">fingerprint</i></a>
+    <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li routerLinkActive="active"><a routerLink="/home" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/list-users"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
+      <li routerLinkActive="active"><a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+      <li routerLinkActive="active"><a routerLink="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
+      <li routerLinkActive="active"><a routerLink="/recover"><i class="fa fa-history" aria-hidden="true"></i> Recover</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin"> <i class="fa fa-cog" aria-hidden="true"></i> Admin</a></li>
+    </ul>
+    <!-- esta es la movil -->
+    <ul class="side-nav teal lighten-1" id="mobile-demo">
+      <i class="material-icons center-align">fingerprint</i>
+      <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/list-users">Users</a></li>
+      <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+      <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+      <li routerLinkActive="active"><a routerLink="/recover">Recover</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+      <div class="sidenav-footer" id="sidenav-footer">
+        <a href="https://github.com/jesustorres38" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/jesustorres38/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/jesustorres38/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="http://www.ejdp.co.ve/Profile/index.html" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+      </div>
+      
+    </ul>
+  </div>
+</nav>
