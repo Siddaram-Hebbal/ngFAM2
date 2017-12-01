@@ -1,9 +1,11 @@
 <div class="row left-align">
   <div class="col l12 s12">
+
     <br>
+
     <p class="flow-text">Fill in the data to add a new user.</p>    
 
-    <form [formGroup]="registerForm" (ngSubmit)="auth.registerUser(registerForm.value)" class="col s12">
+    <form [formGroup]="registerForm" (ngSubmit)="auth.registerUser(registerForm)" class="col s12">
 
       <div class="row">
         <div class="input-field col s12 l6">
@@ -36,7 +38,12 @@
             </div>
         </div>
       </div>
+
       <br>
+
+      <!-- Esto solo se muestra si hay un error al registrarse -->
+      <p *ngIf="auth.registerUserError" class="errorMessage"><strong>{{auth.registerUserError}}</strong></p>
+      <!-- ******* -->
       <button class="btn waves-effect waves-light" type="submit">Register</button>
 
     </form>    

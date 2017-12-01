@@ -11,3 +11,6 @@
     position: relative;
     margin-top: 1rem;
 }
+.errorMessage{
+    color: red;
+}

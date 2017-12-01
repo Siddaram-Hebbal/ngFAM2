@@ -18,11 +18,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     //creamos la instancia del reactive form
     this.registerForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      admin: new FormControl(null, Validators.required)
+      name: new FormControl(null, [Validators.required,Validators.minLength(3),]),
+      email: new FormControl(null, [Validators.required,Validators.minLength(4),]),
+      password: new FormControl(null, [Validators.required,Validators.minLength(4),]),
+      admin: new FormControl()
     });
+
+    //reseteamos la variable que guarda el mensaje de error
+    this.auth.registerUserError="";
   }
 
 }
