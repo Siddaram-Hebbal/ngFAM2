@@ -1,10 +1,9 @@
 <div class="row left-align">
   <div class="col l12 s12">
-    <br><br>
-
+    <br>
     <p class="flow-text">Fill in the data to add a new user.</p>    
 
-    <form [formGroup]="registerForm" (ngSubmit)="mensaje(registerForm.value)" class="col s12">
+    <form [formGroup]="registerForm" (ngSubmit)="auth.registerUser(registerForm.value)" class="col s12">
 
       <div class="row">
         <div class="input-field col s12 l6">
@@ -25,18 +24,20 @@
           <label for="password">Password</label>
         </div>
 
-        <div class="input-field col s12 l6">
+        <div class="input-field2 col s12 l6">
             <i class="material-icons prefix">supervisor_account</i>
-            <select formControlName="role">
-              <option value="" disabled selected></option>
-              <option value="1">Administrator</option>
-              <option value="2">Common user</option>
-            </select>
-            <label>Role</label>
+            <div class="switch">
+              <label>
+                Common
+                <input formControlName="admin" type="checkbox">
+                <span class="lever"></span>
+                Admin
+              </label>
+            </div>
         </div>
       </div>
-
-      <button type="submit">submit</button>
+      <br>
+      <button class="btn waves-effect waves-light" type="submit">Register</button>
 
     </form>    
     </div>

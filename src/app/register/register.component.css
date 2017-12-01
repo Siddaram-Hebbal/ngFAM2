@@ -1,7 +1,13 @@
-.file-field input.file-path{
-    width: 50%;
+.input-field2 .prefix{
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    transition: color .2s;
 }
-.file-field input[type="file"]{
-    width: 50%;
+.input-field2 .switch{
     margin-left: 3rem;
+}
+.input-field2 {
+    position: relative;
+    margin-top: 1rem;
 }
