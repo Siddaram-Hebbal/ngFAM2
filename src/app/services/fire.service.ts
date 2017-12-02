@@ -23,10 +23,20 @@ export class FireService {
     if(data.valid){
       firebase.auth().createUserWithEmailAndPassword(data.value.email, data.value.password)
       .then(res => {
-        this.ruta.navigateByUrl('/home'); 
+        this.ruta.navigateByUrl('/home');
+            firebase.firestore().collection("users").add({
+                name: data.value.name,
+                role: data.value.role
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            }); 
       })
       .catch(error => {
-        console.log(error.message)
+        this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
       });
     }else{
       this.registerUserError = "The form is invalid, please check and try again";
