@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
       name: new FormControl(null, [Validators.required,Validators.minLength(3),]),
       email: new FormControl(null, [Validators.required,Validators.minLength(4),]),
       password: new FormControl(null, [Validators.required,Validators.minLength(4),]),
-      admin: new FormControl()
+      role: new FormControl()
     });
 
     //reseteamos la variable que guarda el mensaje de error

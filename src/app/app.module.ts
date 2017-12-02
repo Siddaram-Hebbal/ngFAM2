@@ -15,7 +15,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ListUsersComponent } from './list-users/list-users.component';
-import { AdminComponent } from './admin/admin.component';
 import { FooterComponent } from './footer/footer.component';
 
 //Services 
@@ -45,7 +44,6 @@ firebase.initializeApp(config);
     RegisterComponent,
     RecoverComponent,
     ListUsersComponent,
-    AdminComponent,
     FooterComponent
   ],
   imports: [
@@ -54,11 +52,10 @@ firebase.initializeApp(config);
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path:'home', component: HomeComponent },
-      {path:'users', component: ListUsersComponent},
+      {path:'list-users', component: ListUsersComponent},
       {path:'login', component: LoginComponent},
       {path:'register', component: RegisterComponent},
       {path:'recover', component: RecoverComponent},
-      {path:'admin', component: AdminComponent},
       {path:'', redirectTo:'home', pathMatch: 'full' },
       {path:'**', component: NotFoundComponent}
     ])
