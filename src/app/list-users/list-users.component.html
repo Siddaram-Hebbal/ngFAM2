@@ -1,6 +1,12 @@
 <div class="row left-align">
   <div class="col l12 s12">
-    <p>Holis</p>
+    <div *ngFor="let x of auth.usersList">
+      <p>{{x.name}}</p>
+      <div *ngIf="x.role;then content else other_content">here is ignored</div>
+      
+      <ng-template #content>Admin</ng-template>
+      <ng-template #other_content>Common User</ng-template>
+    </div>
   </div>
 </div>
 

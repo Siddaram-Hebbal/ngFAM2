@@ -6,17 +6,27 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
+  public usersList = [];
   public registerUserError = "";
   public loginUserError = "";
+  
 
   constructor(public ruta: Router) { }
 
   showUsers(){
     firebase.firestore().collection("users").get()
     .then( res => {
+      
       res.forEach( doc => {
-        console.log("id: "+doc.id+"data: "+doc.data());
-      })
+        var obj = {};
+        obj["id"] = doc.id;
+        obj["name"] = doc.data().name;
+        obj["role"] = doc.data().role;
+        this.usersList.push(obj);
+        console.log(this.usersList);
+        // console.log(this.usersList);
+      });
+      
     })
     .catch( error => {
       console.log("Error al mostrar los usuarios, mensaje: "+ error.message);
