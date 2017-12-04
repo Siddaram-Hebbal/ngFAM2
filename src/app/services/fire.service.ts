@@ -12,6 +12,15 @@ export class FireService {
   constructor(public ruta: Router) { }
 
   showUsers(){
+    firebase.firestore().collection("users").get()
+    .then( res => {
+      res.forEach( doc => {
+        console.log("id: "+doc.id+"data: "+doc.data());
+      })
+    })
+    .catch( error => {
+      console.log("Error al mostrar los usuarios, mensaje: "+ error.message);
+    });
 
   }
 
@@ -30,7 +39,9 @@ export class FireService {
       .catch(error => {
         this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
       });
-    }else{
+    }
+    // si el formulario no es valido mostramos el mensaje de error.
+    else{
       this.registerUserError = "The form is invalid, please check and try again";
     }
   }
@@ -41,11 +52,11 @@ export class FireService {
       name: name,
       role: role
     })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+    .then( res => {
+        console.log("Documento guardado con ID: "+ res.id);
     })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
+    .catch( error => {
+        console.log("Error guardando el documento, mensaje: "+ error);
     }); 
   }
 
