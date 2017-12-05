@@ -15,4 +15,8 @@ export class ListUsersComponent implements OnInit {
     this.auth.showUsers();
   }
 
+  imprimir(id){
+    console.log(id);
+  }
+
 }

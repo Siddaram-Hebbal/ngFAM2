@@ -11,6 +11,7 @@
         
         <div class="section">
           <h5>{{x.name}}</h5>
+          <button (click)="imprimir(x.id)">imprimir consola</button>
           <div *ngIf="x.role;then content else other_content">here is ignored</div>
             <ng-template #content><p>Admin</p></ng-template>
             <ng-template #other_content><p>Common User</p></ng-template>

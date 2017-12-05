@@ -50,7 +50,7 @@ export class FireService {
       firebase.auth().createUserWithEmailAndPassword(data.value.email, data.value.password)
       .then(res => {
         this.ruta.navigateByUrl('/list-users');
-        this.saveUser(data.value.name,data.value.role);        
+        this.saveUser(data.value.name,data.value.role,res.uid);        
       })
       .catch(error => {
         this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
@@ -62,17 +62,17 @@ export class FireService {
     }
   }
 
-  saveUser(name, role){
+  saveUser(name, role, uid){
     //con esta funcion guardamos el nombre y el rol de los usuarios para mostrarlo luego
-    firebase.firestore().collection("users").add({
+    firebase.firestore().collection("users").doc(uid).set({
       name: name,
       role: role
     })
     .then( res => {
-        console.log("Documento guardado con ID: "+ res.id);
+        console.log(res);
     })
     .catch( error => {
-        console.log("Error guardando el documento, mensaje: "+ error);
+        console.log(error);
     }); 
   }
 
