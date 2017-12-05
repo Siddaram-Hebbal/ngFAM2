@@ -6,6 +6,8 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
+  public delete_id = "";
+
   public loading = false;
   public usersList = [];
   public registerUserError = "";
@@ -13,6 +15,8 @@ export class FireService {
   
 
   constructor(public ruta: Router) { }
+
+  // FUNCIONES PRINCIPALES
 
   showUsers(){
     //reseteamos valores
@@ -81,7 +85,12 @@ export class FireService {
   }
 
   deleteUser(){
+    console.log("borrado: "+this.delete_id);
+  }
 
+  // FUNCIONES SECUNDARIAS
+  pre_deleteUser(id){
+    this.delete_id = id;
   }
 
   startLoad(){

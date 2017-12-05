@@ -1,24 +1,43 @@
 <div class="row left-align">
   <div  class="col l12 s12">
+    <br>
     <!-- Para mostrar la barra de progreso -->
     <div *ngIf="auth.loading" class="center-align">
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
     </div>
-
-    <div *ngFor="let x of auth.usersList">
-        
-        <div class="section">
-          <h5>{{x.name}}</h5>
-          <button (click)="imprimir(x.id)">imprimir consola</button>
-          <div *ngIf="x.role;then content else other_content">here is ignored</div>
+    <!-- Ciclo para recorrer array de usuarios -->
+    <div *ngFor="let x of auth.usersList" >
+        <div class="row">
+          <div class="col l6 s6 left-align">
+            <h5>{{x.name}}</h5>
+            <div *ngIf="x.role;then content else other_content">here is ignored</div>
             <ng-template #content><p>Admin</p></ng-template>
             <ng-template #other_content><p>Common User</p></ng-template>
-          <div class="divider"></div>
+          </div>
+          <div class="col l6 s6 right-align">
+            <br>
+            <a class="btn-floating waves-effect waves-light">
+              <i (click)="auth.pre_deleteUser(x.id)" class="material-icons modal-trigger" data-target="modal1">delete</i>
+            </a>
+            
+            <!-- <a  class="right-align waves-effect waves-teal btn-flat modal-trigger" >borrar</a> -->
+          </div>
+          <div class="col l12 s12"><div class="divider"></div></div>
         </div>
-      
-    </div>
+        
+    </div>  
   </div>
 </div>
 
+<!-- Modal para preguntar si esta seguro de eliminar -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>Esta seguro de imprimirlo?</p>
+    </div>
+    <div class="modal-footer">
+      <a (click)="auth.deleteUser()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
