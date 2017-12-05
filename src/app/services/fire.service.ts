@@ -29,9 +29,9 @@ export class FireService {
         obj["role"] = doc.data().role;
         //lo agregamos a la lista de usuarios a mostrar
         this.usersList.push(obj);
-        //detenemos el icono spiner
-        this.stopLoad();
       });
+      //detenemos el icono spiner
+      this.stopLoad();
       
     })
     .catch( error => {
@@ -49,7 +49,7 @@ export class FireService {
     if(data.valid){
       firebase.auth().createUserWithEmailAndPassword(data.value.email, data.value.password)
       .then(res => {
-        this.ruta.navigateByUrl('/home');
+        this.ruta.navigateByUrl('/list-users');
         this.saveUser(data.value.name,data.value.role);        
       })
       .catch(error => {

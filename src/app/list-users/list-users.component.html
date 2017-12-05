@@ -1,10 +1,12 @@
 <div class="row left-align">
   <div  class="col l12 s12">
+    <!-- Para mostrar la barra de progreso -->
     <div *ngIf="auth.loading" class="center-align">
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
     </div>
+
     <div *ngFor="let x of auth.usersList">
         
         <div class="section">
