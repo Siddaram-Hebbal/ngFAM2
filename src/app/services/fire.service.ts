@@ -6,6 +6,7 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
+  public loading = false;
   public usersList = [];
   public registerUserError = "";
   public loginUserError = "";
@@ -14,24 +15,29 @@ export class FireService {
   constructor(public ruta: Router) { }
 
   showUsers(){
+    //reseteamos valores
+    this.usersList = [];
+    //buscamos las colecciones guardadas en usuarios
     firebase.firestore().collection("users").get()
     .then( res => {
       
       res.forEach( doc => {
+        //para cada coleccion guardamos su id, nombre y role
         var obj = {};
         obj["id"] = doc.id;
         obj["name"] = doc.data().name;
         obj["role"] = doc.data().role;
+        //lo agregamos a la lista de usuarios a mostrar
         this.usersList.push(obj);
-        console.log(this.usersList);
-        // console.log(this.usersList);
+        //detenemos el icono spiner
+        this.stopLoad();
       });
       
     })
     .catch( error => {
       console.log("Error al mostrar los usuarios, mensaje: "+ error.message);
     });
-
+    
   }
 
   loginUser(){
@@ -76,6 +82,14 @@ export class FireService {
 
   deleteUser(){
 
+  }
+
+  startLoad(){
+    this.loading = true;
+  }
+
+  stopLoad(){
+    this.loading = false;
   }
 
   

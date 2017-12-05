@@ -11,6 +11,7 @@ export class ListUsersComponent implements OnInit {
   constructor(public auth: FireService) { }
 
   ngOnInit() {
+    this.auth.startLoad();
     this.auth.showUsers();
   }
 

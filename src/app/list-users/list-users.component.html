@@ -1,11 +1,20 @@
 <div class="row left-align">
-  <div class="col l12 s12">
+  <div  class="col l12 s12">
+    <div *ngIf="auth.loading" class="center-align">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
     <div *ngFor="let x of auth.usersList">
-      <p>{{x.name}}</p>
-      <div *ngIf="x.role;then content else other_content">here is ignored</div>
+        
+        <div class="section">
+          <h5>{{x.name}}</h5>
+          <div *ngIf="x.role;then content else other_content">here is ignored</div>
+            <ng-template #content><p>Admin</p></ng-template>
+            <ng-template #other_content><p>Common User</p></ng-template>
+          <div class="divider"></div>
+        </div>
       
-      <ng-template #content>Admin</ng-template>
-      <ng-template #other_content>Common User</ng-template>
     </div>
   </div>
 </div>
