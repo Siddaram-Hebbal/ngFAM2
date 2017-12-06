@@ -19,25 +19,21 @@
           <div class="col l6 s6 right-align">
             <br>
             <a class="btn-floating waves-effect waves-light">
-              <i (click)="auth.pre_deleteUser(x.id)" class="material-icons modal-trigger" data-target="modal1">delete</i>
+              <i (click)="auth.showId(x.id)" class="material-icons modal-trigger" data-target="modal1">visibility</i>
             </a>
-            
-            <!-- <a  class="right-align waves-effect waves-teal btn-flat modal-trigger" >borrar</a> -->
           </div>
           <div class="col l12 s12"><div class="divider"></div></div>
         </div>
-        
     </div>  
   </div>
 </div>
-
-<!-- Modal para preguntar si esta seguro de eliminar -->
+<!-- Modal para mostrar el id -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>Esta seguro de imprimirlo?</p>
+      <h4>User ID!</h4>
+      <p>ID: {{auth.show_id}}</p>
     </div>
     <div class="modal-footer">
-      <a (click)="auth.deleteUser()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>

@@ -6,12 +6,17 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
-  public delete_id = "";
-
+  // Esto es para mostrar la barra de pre-cargando
   public loading = false;
+
+  // Esto para recopilar los datos de los usuarios
   public usersList = [];
-  public registerUserError = "";
-  public loginUserError = "";
+  
+  // Esto para mostrar errores al registrarse o al logearse
+  public userError = "";
+
+  // Para mostrar el id
+  public show_id = "";
   
 
   constructor(public ruta: Router) { }
@@ -44,8 +49,23 @@ export class FireService {
     
   }
 
-  loginUser(){
-
+  loginUser(data){
+     // si el formulario es valido procedemos logear al usuario
+    if(data.valid){
+      console.log("logeado");
+      // firebase.auth().createUserWithEmailAndPassword(data.value.email, data.value.password)
+      // .then(res => {
+      //   this.ruta.navigateByUrl('/list-users');
+      //   this.saveUser(data.value.name,data.value.role,res.uid);        
+      // })
+      // .catch(error => {
+      //   this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
+      // });
+    }
+    // si el formulario no es valido mostramos el mensaje de error.
+    else{
+      this.userError = "The form is invalid, please check and try again";
+    }
   }
 
   registerUser(data){
@@ -57,12 +77,12 @@ export class FireService {
         this.saveUser(data.value.name,data.value.role,res.uid);        
       })
       .catch(error => {
-        this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
+        this.userError = "The form is invalid, please check and try again, Error: "+error.message;
       });
     }
     // si el formulario no es valido mostramos el mensaje de error.
     else{
-      this.registerUserError = "The form is invalid, please check and try again";
+      this.userError = "The form is invalid, please check and try again";
     }
   }
 
@@ -81,16 +101,14 @@ export class FireService {
   }
 
   recoverUser(){
-
   }
 
   deleteUser(){
-    console.log("borrado: "+this.delete_id);
   }
 
   // FUNCIONES SECUNDARIAS
-  pre_deleteUser(id){
-    this.delete_id = id;
+  showId(id){
+    this.show_id = id;
   }
 
   startLoad(){

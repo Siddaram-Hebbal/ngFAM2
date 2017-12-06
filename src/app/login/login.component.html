@@ -1,3 +1,32 @@
-<p>
-  login works!
-</p>
+<div class="row left-align">
+  <div class="col l12 s12">
+
+    <br>
+
+    <p class="flow-text">Login.</p>    
+
+    <form [formGroup]="loginForm" (ngSubmit)="auth.loginUser(loginForm)" class="col s12">
+
+      <div class="row">
+        <div class="input-field col s12 l6">
+          <i class="material-icons prefix">email</i>
+          <input formControlName="email" id="icon_email" type="email" class="validate">
+          <label for="icon_email">Email</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <i class="material-icons prefix">lock</i>
+          <input formControlName="password" id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Esto solo se muestra si hay un error al registrarse -->
+      <p *ngIf="auth.userError" class="errorMessage"><strong>{{auth.userError}}</strong></p>
+      <!-- ******* -->
+      <button class="btn waves-effect waves-light" type="submit">Login</button>
+
+    </form>    
+    </div>
+</div>

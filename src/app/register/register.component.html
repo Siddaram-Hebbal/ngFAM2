@@ -42,7 +42,7 @@
       <br>
 
       <!-- Esto solo se muestra si hay un error al registrarse -->
-      <p *ngIf="auth.registerUserError" class="errorMessage"><strong>{{auth.registerUserError}}</strong></p>
+      <p *ngIf="auth.userError" class="errorMessage"><strong>{{auth.userError}}</strong></p>
       <!-- ******* -->
       <button class="btn waves-effect waves-light" type="submit">Register</button>
 

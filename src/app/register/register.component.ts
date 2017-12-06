@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     });
 
     //reseteamos la variable que guarda el mensaje de error
-    this.auth.registerUserError="";
+    this.auth.userError="";
   }
 
 }
