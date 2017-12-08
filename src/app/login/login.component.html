@@ -1,5 +1,5 @@
 <div class="row left-align">
-  <div class="col l12 s12">
+  <div *ngIf="!auth.actualUser" class="col l12 s12">
 
     <br>
 
@@ -29,4 +29,8 @@
 
     </form>    
     </div>
+  <div *ngIf="auth.actualUser" class="col l12 s12">
+    <p>Cerrar sesion</p>
+    <p>Eliminar mi cuenta</p>
+  </div>
 </div>

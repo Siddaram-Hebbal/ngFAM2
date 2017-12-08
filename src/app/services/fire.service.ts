@@ -6,6 +6,9 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
+  // Para manejar al usuario
+  public actualUser = false;
+
   // Esto es para mostrar la barra de pre-cargando
   public loading = false;
 
@@ -52,20 +55,31 @@ export class FireService {
   loginUser(data){
      // si el formulario es valido procedemos logear al usuario
     if(data.valid){
-      console.log("logeado");
-      // firebase.auth().createUserWithEmailAndPassword(data.value.email, data.value.password)
-      // .then(res => {
-      //   this.ruta.navigateByUrl('/list-users');
-      //   this.saveUser(data.value.name,data.value.role,res.uid);        
-      // })
-      // .catch(error => {
-      //   this.registerUserError = "The form is invalid, please check and try again, Error: "+error.message;
-      // });
+      firebase.auth().signInWithEmailAndPassword(data.value.email, data.value.password)
+      .then ( res =>{
+        this.currentUser();        
+      })
+      .catch( error => {
+        this.userError = "The form is invalid, please check and try again, Error: "+error.message;
+      });
     }
     // si el formulario no es valido mostramos el mensaje de error.
     else{
       this.userError = "The form is invalid, please check and try again";
     }
+  }
+
+  currentUser(){
+    firebase.auth().onAuthStateChanged( user => {
+      if (user) {
+        console.log("usuario loeadoooooooooooooooooo");
+        console.log(user);
+        this.actualUser = true;
+      } else {
+        console.log("no hay nadie logeado");
+        this.actualUser = false;
+      }
+    });
   }
 
   registerUser(data){
@@ -107,19 +121,8 @@ export class FireService {
   }
 
   // FUNCIONES SECUNDARIAS
-  showId(id){
-    this.show_id = id;
-  }
-
-  startLoad(){
-    this.loading = true;
-  }
-
-  stopLoad(){
-    this.loading = false;
-  }
-
-  
-    
+  showId(id){this.show_id = id;}
+  startLoad(){this.loading = true;}
+  stopLoad(){this.loading = false;}
 
 }
