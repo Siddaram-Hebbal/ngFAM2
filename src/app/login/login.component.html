@@ -32,7 +32,7 @@
   <div *ngIf="auth.actualUser" class="col l8 offset-l2 s10 offset-s1 center-align">
     <br>
     <p class="flow-text">You started a session as "{{auth.actualUser}}". If this is not your account close session.</p>    
-    <a class="waves-effect waves-light btn blue"><i class="material-icons left">reply</i>Close Session</a>
+    <a (click)="auth.logoutUser()" class="waves-effect waves-light btn blue"><i class="material-icons left">reply</i>Close Session</a>
     <a class="waves-effect waves-light btn red "><i class="material-icons right">delete_forever</i>DELETE ACCOUNT</a>
   </div>
 </div>

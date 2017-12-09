@@ -71,15 +71,8 @@ export class FireService {
 
   currentUser(){
     firebase.auth().onAuthStateChanged( user => {
-      if (user) {
-        console.log("usuario logeadoooooooooooooooooo");
-        console.log(user);
-        this.actualUser = user.email;
-       
-      } else {
-        console.log("no hay nadie logeado");
-        this.actualUser = user.email;
-      }
+      if (user) {this.actualUser = user.email;} 
+      else {this.actualUser = "";}
     });
   }
 
@@ -113,6 +106,16 @@ export class FireService {
     .catch( error => {
         console.log(error);
     }); 
+  }
+
+  logoutUser(){
+    firebase.auth().signOut()
+    .then(res => {
+      console.log(res);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   recoverUser(){
