@@ -7,7 +7,7 @@ import 'firebase/firestore';
 export class FireService {
 
   // Para manejar al usuario
-  public actualUser = false;
+  public actualUser = "";
 
   // Esto es para mostrar la barra de pre-cargando
   public loading = false;
@@ -72,12 +72,13 @@ export class FireService {
   currentUser(){
     firebase.auth().onAuthStateChanged( user => {
       if (user) {
-        console.log("usuario loeadoooooooooooooooooo");
+        console.log("usuario logeadoooooooooooooooooo");
         console.log(user);
-        this.actualUser = true;
+        this.actualUser = user.email;
+       
       } else {
         console.log("no hay nadie logeado");
-        this.actualUser = false;
+        this.actualUser = user.email;
       }
     });
   }

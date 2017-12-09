@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
   constructor(public auth: FireService) { }
 
   ngOnInit() {
+
+    //vemos quien esta logeado
+    this.auth.currentUser();
+
     //creamos la instancia del reactive form
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required,Validators.minLength(4),]),
