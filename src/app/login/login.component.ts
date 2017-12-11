@@ -1,6 +1,7 @@
 import { FireService } from './../services/fire.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+declare var $ :any;
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(public auth: FireService) { }
 
   ngOnInit() {
+    //inicializamos modal para que se despliegue 
+    $('.modal').modal();
 
     //vemos quien esta logeado
     this.auth.currentUser();

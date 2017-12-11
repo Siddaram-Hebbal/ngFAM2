@@ -29,8 +29,8 @@
 
     </form>    
   </div>
+
   <div *ngIf="auth.actualUser" class="col l8 offset-l2 s12 center-align">
-    
     <div class="row">
       <div class="col l8 offset-l2 s10 offset-s1 ">
         <br>
@@ -40,8 +40,32 @@
         <a (click)="auth.logoutUser()" class="waves-effect waves-light btn teal lighten-2"><i class="material-icons left">reply</i>Close Session</a>
       </div>
       <div class="col s12">
-        <a class="waves-effect waves-light btn teal lighten-2"><i class="material-icons right">delete_forever</i>DELETE ACCOUNT</a>
+        <a class="waves-effect waves-light btn teal lighten-2 modal-trigger" data-target="modal_delete"><i class="material-icons right">delete_forever</i>DELETE ACCOUNT</a>
+      </div>
+      <div class="col s12">
+        <!-- Esto solo se muestra si hay un error al eliminar cuenta -->
+        <p *ngIf="auth.userError" class="errorMessage"><strong>{{auth.userError}}</strong></p>
       </div>
     </div>
+  </div>
+</div>
+<h1>{{auth.actualUser}}</h1>
+<!-- Modal para preguntar al borrar usuario -->
+<div id="modal_delete" class="modal">
+  <div class="modal-content">
+    <h4>DELETE ACCOUNT?</h4>
+    <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input [(ngModel)]="auth.deletePass" name="pass" id="first_name" type="password" class="validate">
+              <label for="first_name">Enter your password:</label>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a (click)="auth.deleteUserConfirm()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>

@@ -6,8 +6,12 @@ import 'firebase/firestore';
 @Injectable()
 export class FireService {
 
+  //password for delete
+  public deletePass = "";
+
   // Para manejar al usuario
   public actualUser = "";
+  public actualUserId = "";
 
   // Esto es para mostrar la barra de pre-cargando
   public loading = false;
@@ -71,8 +75,10 @@ export class FireService {
 
   currentUser(){
     firebase.auth().onAuthStateChanged( user => {
-      if (user) {this.actualUser = user.email;} 
-      else {this.actualUser = "";}
+      if (user) {
+        this.actualUser = user.email;
+        this.actualUserId = user.uid;
+      } else {this.actualUser = "";}
     });
   }
 
@@ -122,6 +128,37 @@ export class FireService {
   }
 
   deleteUser(){
+    var user = firebase.auth().currentUser;
+    user.delete().then(res => {
+      console.log("user deleted");
+    }).catch(error => {
+      console.log("error when try to deleted");
+    });
+  }
+
+  deleteDataUser(){
+    firebase.firestore().collection("users").doc(this.actualUserId).delete()
+    .then(res => {
+      console.log("Data successfully deleted!");
+    })
+    .catch(error => {
+        console.error("Error removing document: ", error);
+    });
+  }
+
+  deleteUserConfirm(){
+    //confirmamos que sabe el password
+    firebase.auth().signInWithEmailAndPassword(this.actualUser, this.deletePass)
+    .then ( res =>{
+      //eliminamos la data, el usuario y redireccionamos a otra pagina
+      this.deleteDataUser();
+      this.deleteUser();
+      this.ruta.navigateByUrl('/home');
+    })
+    .catch( error => {
+      this.userError = "The form is invalid, please check and try again, Error: "+error.message;
+    });
+
   }
 
   // FUNCIONES SECUNDARIAS
