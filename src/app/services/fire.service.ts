@@ -29,7 +29,7 @@ export class FireService {
   constructor(public ruta: Router) { }
 
   // FUNCIONES PRINCIPALES
-
+//para mostrar la lista de usuarios
   showUsers(){
     //reseteamos valores
     this.usersList = [];
@@ -55,7 +55,7 @@ export class FireService {
     });
     
   }
-
+//para logear al usuario
   loginUser(data){
      // si el formulario es valido procedemos logear al usuario
     if(data.valid){
@@ -72,7 +72,7 @@ export class FireService {
       this.userError = "The form is invalid, please check and try again";
     }
   }
-
+//para saber si alguien esta logeado
   currentUser(){
     firebase.auth().onAuthStateChanged( user => {
       if (user) {
@@ -81,7 +81,7 @@ export class FireService {
       } else {this.actualUser = "";}
     });
   }
-
+//para registrar nuevos usuarios
   registerUser(data){
     // si el formulario es valido procedemos a registrar al usuario
     if(data.valid){
@@ -99,7 +99,7 @@ export class FireService {
       this.userError = "The form is invalid, please check and try again";
     }
   }
-
+//para almacenar datos de cada usuario nuevo que se registra
   saveUser(name, role, uid){
     //con esta funcion guardamos el nombre y el rol de los usuarios para mostrarlo luego
     firebase.firestore().collection("users").doc(uid).set({
@@ -113,7 +113,7 @@ export class FireService {
         console.log(error);
     }); 
   }
-
+//para cerrar session
   logoutUser(){
     firebase.auth().signOut()
     .then(res => {
@@ -123,10 +123,10 @@ export class FireService {
       console.log(error);
     });
   }
-
+//para recuperar el password en caso de olvido
   recoverUser(){
   }
-
+//para eliminar un usuario
   deleteUser(){
     var user = firebase.auth().currentUser;
     user.delete().then(res => {
@@ -135,7 +135,7 @@ export class FireService {
       console.log("error when try to deleted");
     });
   }
-
+//para eliminar los datos de un usuario
   deleteDataUser(){
     firebase.firestore().collection("users").doc(this.actualUserId).delete()
     .then(res => {
@@ -145,7 +145,7 @@ export class FireService {
         console.error("Error removing document: ", error);
     });
   }
-
+//para confirmar que desea eliminar un usuario
   deleteUserConfirm(){
     //confirmamos que sabe el password
     firebase.auth().signInWithEmailAndPassword(this.actualUser, this.deletePass)
