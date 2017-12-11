@@ -16,12 +16,14 @@ import { RegisterComponent } from './register/register.component';
 import { RecoverComponent } from './recover/recover.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecoverMessageComponent } from './recover-message/recover-message.component';
 
 //Services 
 import { FireService } from './services/fire.service';
 
 //Connection with Firebase
 import * as firebase from 'firebase';
+
 
 var config = {
   apiKey: "AIzaSyC3TCDQt0tccAf9LaN-UOY95hKB_iMjKyw",
@@ -44,7 +46,8 @@ firebase.initializeApp(config);
     RegisterComponent,
     RecoverComponent,
     ListUsersComponent,
-    FooterComponent
+    FooterComponent,
+    RecoverMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ firebase.initializeApp(config);
       {path:'login', component: LoginComponent},
       {path:'register', component: RegisterComponent},
       {path:'recover', component: RecoverComponent},
+      {path: 'recover-message', component: RecoverMessageComponent},
       {path:'', redirectTo:'home', pathMatch: 'full' },
       {path:'**', component: NotFoundComponent}
     ])

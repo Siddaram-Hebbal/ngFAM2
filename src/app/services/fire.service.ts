@@ -24,6 +24,9 @@ export class FireService {
 
   // Para mostrar el id
   public show_id = "";
+
+  //para restablecer password
+  public emailRecover = "";
   
 
   constructor(public ruta: Router) { }
@@ -125,6 +128,13 @@ export class FireService {
   }
 //para recuperar el password en caso de olvido
   recoverUser(){
+    firebase.auth().sendPasswordResetEmail(this.emailRecover)
+    .then(res => {
+      this.ruta.navigateByUrl('/recover-message');
+    })
+    .catch(error => {
+      this.userError = "The form is invalid, please check and try again, Error: "+error.message;
+    });
   }
 //para eliminar un usuario
   deleteUser(){
@@ -160,10 +170,8 @@ export class FireService {
     });
 
   }
-
   // FUNCIONES SECUNDARIAS
   showId(id){this.show_id = id;}
   startLoad(){this.loading = true;}
   stopLoad(){this.loading = false;}
-
 }

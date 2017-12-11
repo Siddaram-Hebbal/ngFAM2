@@ -1,3 +1,4 @@
+import { FireService } from './../services/fire.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecoverComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: FireService) { }
 
   ngOnInit() {
+    //reseteamos la variable que guarda el mensaje de error
+    this.auth.userError="";
   }
 
 }
