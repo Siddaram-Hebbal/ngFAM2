@@ -109,21 +109,19 @@ export class FireService {
       name: name,
       role: role
     })
-    .then( res => {
-        console.log(res);
+    .then( res => {console.log("Data saved successfully!");
     })
-    .catch( error => {
-        console.log(error);
+    .catch( error => {console.log(error);
     }); 
   }
 //para cerrar session
   logoutUser(){
     firebase.auth().signOut()
     .then(res => {
-      console.log(res);
+      this.userError = "";
     })
     .catch(error => {
-      console.log(error);
+      this.userError = error.message;
     });
   }
 //para recuperar el password en caso de olvido
@@ -138,10 +136,13 @@ export class FireService {
   }
 //para eliminar un usuario
   deleteUser(){
-    var user = firebase.auth().currentUser;
-    user.delete().then(res => {
-      console.log("user deleted");
-    }).catch(error => {
+    firebase.auth().currentUser.delete()
+    .then(res => {
+      //redireccionamos a home
+      console.log("User deleted!")
+      this.ruta.navigateByUrl('/list-users');
+    })
+    .catch(error => {
       console.log("error when try to deleted");
     });
   }
@@ -149,7 +150,9 @@ export class FireService {
   deleteDataUser(){
     firebase.firestore().collection("users").doc(this.actualUserId).delete()
     .then(res => {
-      console.log("Data successfully deleted!");
+      //eliminamos al usuario
+      console.log("Data deleted!");
+      this.deleteUser();
     })
     .catch(error => {
         console.error("Error removing document: ", error);
@@ -160,10 +163,8 @@ export class FireService {
     //confirmamos que sabe el password
     firebase.auth().signInWithEmailAndPassword(this.actualUser, this.deletePass)
     .then ( res =>{
-      //eliminamos la data, el usuario y redireccionamos a otra pagina
+      //llamamos a la funcion deleteDataUser que a su vez llamara a deleteUser
       this.deleteDataUser();
-      this.deleteUser();
-      this.ruta.navigateByUrl('/home');
     })
     .catch( error => {
       this.userError = "The form is invalid, please check and try again, Error: "+error.message;
