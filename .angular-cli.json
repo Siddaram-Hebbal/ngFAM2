@@ -20,12 +20,12 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/materialize-css/dist/css/materialize.css"
+        "./assets/materialize-css/dist/css/materialize.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/materialize-css/dist/js/materialize.min.js",
-        "../node_modules/materialize-css/dist/js/materialize-init.js"
+        "./assets/jquery/dist/jquery.min.js",
+        "./assets/materialize-css/dist/js/materialize.min.js",
+        "./assets/materialize-css/dist/js/materialize-init.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
