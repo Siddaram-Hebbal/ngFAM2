@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   
 
-  constructor(private auth: FireService) { }
+  constructor(public auth: FireService) { }
 
   ngOnInit() {
     //creamos la instancia del reactive form
