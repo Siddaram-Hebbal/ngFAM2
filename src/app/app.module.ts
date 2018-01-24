@@ -1,7 +1,7 @@
 //Angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Main Component
@@ -35,6 +35,16 @@ var config = {
 };
 firebase.initializeApp(config);
 
+const appRoutes: Routes = [
+  {path:'home', component: HomeComponent },
+  {path:'list-users', component: ListUsersComponent},
+  {path:'login', component: LoginComponent},
+  {path:'register', component: RegisterComponent},
+  {path:'recover', component: RecoverComponent},
+  {path:'recover-message', component: RecoverMessageComponent},
+  {path:'', redirectTo: 'home', pathMatch: 'full' },
+  {path:'**', component: NotFoundComponent}
+];
 
 @NgModule({
   declarations: [
@@ -53,16 +63,7 @@ firebase.initializeApp(config);
     BrowserModule,
     FormsModule, 
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      {path:'home', component: HomeComponent },
-      {path:'list-users', component: ListUsersComponent},
-      {path:'login', component: LoginComponent},
-      {path:'register', component: RegisterComponent},
-      {path:'recover', component: RecoverComponent},
-      {path: 'recover-message', component: RecoverMessageComponent},
-      {path:'', redirectTo:'home', pathMatch: 'full' },
-      {path:'**', component: NotFoundComponent}
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [FireService],
   bootstrap: [AppComponent]
