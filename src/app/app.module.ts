@@ -36,13 +36,13 @@ var config = {
 firebase.initializeApp(config);
 
 const appRoutes: Routes = [
+  {path:'', component: HomeComponent },
   {path:'home', component: HomeComponent },
   {path:'list-users', component: ListUsersComponent},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'recover', component: RecoverComponent},
   {path:'recover-message', component: RecoverMessageComponent},
-  {path:'', redirectTo: 'home', pathMatch: 'full' },
   {path:'**', component: NotFoundComponent}
 ];
 
